@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Car Parking System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🚗 Smart Car Parking Management</h1>
+
+    <div class="top-controls">
+      <input id="searchBox" type="text" placeholder="🔍 Search by car name, number or owner" />
+      <div class="buttons">
+        <button id="openFormBtn">+ Park a Car</button>
+        <button id="clearAllBtn" class="danger">Clear All</button>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div>Total Slots: <strong id="total-slots">12</strong></div>
+      <div>Occupied: <strong id="occupied">0</strong></div>
+      <div>Available: <strong id="available">12</strong></div>
+    </div>
+  </header>
+
+  <main>
+    <div id="parkingLot" class="parking-lot" aria-live="polite"></div>
+  </main>
+
+  <!-- Park Car Modal -->
+  <div class="modal" id="carFormModal" aria-hidden="true">
+    <div class="modal-content">
+      <h2>Park a Car</h2>
+      <label>Car Model
+        <input id="carModel" type="text" placeholder="e.g. Hyundai i20" />
+      </label>
+      <label>Car Number
+        <input id="carNumber" type="text" placeholder="e.g. UP14 AB 5678" />
+      </label>
+      <label>Owner Name
+        <input id="ownerName" type="text" placeholder="e.g. Satyam Singh" />
+      </label>
+      <label>Select Slot
+        <select id="slotSelect"></select>
+      </label>
+      <div class="modal-actions">
+        <button id="parkCarBtn">Confirm</button>
+        <button id="closeFormBtn" class="secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info Modal -->
+  <div class="modal" id="infoModal" aria-hidden="true">
+    <div class="modal-content">
+      <h2>Car Info</h2>
+      <p><strong>Car Model:</strong> <span id="infoCarModel">—</span></p>
+      <p><strong>Car Number:</strong> <span id="infoCarNumber">—</span></p>
+      <p><strong>Owner:</strong> <span id="infoOwner">—</span></p>
+      <p><strong>Slot:</strong> <span id="infoSlot">—</span></p>
+      <p><strong>Parked At:</strong> <span id="infoParkedAt">—</span></p>
+      <p><strong>Duration:</strong> <span id="infoDuration">—</span></p>
+      <p><strong>Current Fee:</strong> ₹<span id="infoFee">0</span></p>
+      <div class="modal-actions">
+        <button id="downloadPdfBtn">⬇️ Download PDF</button>
+        <button id="removeCarBtn" class="danger">Remove Car</button>
+        <button id="closeInfoBtn" class="secondary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <small>Fee: ₹<span id="ratePerHour">20</span>/hour — Data saved in browser (localStorage)</small>
+  </footer>
+
+  <!-- jsPDF (UMD) -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
